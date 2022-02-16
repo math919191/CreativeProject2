@@ -1,5 +1,7 @@
 # CreativeProject2
 
+Using JS/APIs to add book information to the existing card from css. We will use penguin to get the information and dislpay it!
+
 Ideas for API/JS
 
 3 Every day there is a featured book --> special book per day historical day...relating to the holiday. Main cover is the book of the day
