@@ -1,19 +1,32 @@
 # CreativeProject2
 
 Ideas for API/JS
+
 1 book covers/reviews
+
 2 Meme book cover
+
 3 Every day there is a featured book --> special book per day historical day...relating to the holiday
+
 4 Main cover is the book of the day
+
 5 Trade books for crypto currency
+
 6 Use the api to add author publication reviews and only need book title / isbn 
+
 7 search by author and list the books
+
 8 search by subject 
+
 9 link to purchase books...
+
 10 poetry section
+
 11 Bookshelf IDs (google)
-12
-13
+
+12 none rn
+
+13 figure out how to use google bookshelf?
 
 
 Possible APIs
