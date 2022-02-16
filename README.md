@@ -19,6 +19,9 @@ search by subject
 
 Possible APIs
 https://openlibrary.org/developers/api - contains....
+
+Open Library	Books, book covers and related data	No (auth)	Yes	No (CORS)
+
 Books API - Retrieve a specific work or edition by identifier
 Authors API - Retrieve an author and their works by author identifier
 Subjects API - Fetch books by subject name
@@ -28,7 +31,9 @@ Partner API - Formerly the "Read" API, fetch one or more books by library identi
 Covers API - Fetch book covers by ISBN or Open Library identifier
 Recent Changes API - Programatic access to changes across Open Library
 
-http://www.penguinrandomhouse.biz/webservices/rest/ - contains...
+http://www.penguinrandomhouse.biz/webservices/rest/ - contains..
+Penguin Publishing	Books, book covers and related data	No	Yes	Yes
+.
 Author
 Any one of a book's contributors including roles such as author, illustrator, or reader.
 Event
@@ -39,7 +44,7 @@ Work
 A collection of titles that share the same content identified by a Penguin Random House-specific Work ID. Different formats of a title are collected under the same Work ID.
 
 https://developers.google.com/books/
-
+ Google Books	Books	OAuth	Yes	Unknown
 search and browse through the list of books that match a given query.
 view information about a book, including metadata, availability and price, links to the preview page.
 manage your own bookshelves
