@@ -33,21 +33,46 @@ function usefulGoogle(title){
             let cards = "";
             let myBooks = json.items;
             let imagesrc = "";
-
-             for (let i = 0; i < myBooks.length; i++ ){
+            
+            
+                for (let i = 0; i < myBooks.length; i++ ){
                 
                 
-                let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
+                    let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
+                    
+    
+                    let myTitle = json.items[i].volumeInfo.title;
+                    let author = json.items[i].volumeInfo.authors;
+                    let card = makeCardGoogle(myTitle, author, imagesrc);
+                    cards += card;
+                    document.getElementById("b").innerHTML = cards;
+                    console.log(i);
+                    
+                var didLoad = new Promise(
+                    function(resolve, reject) {
+                        if (imagesrc != undefined) {
+                            resolve(imagesrc);
+                        } else {
+                            var reason = new Error("failed to load");
+                            reject(reason);
+                        }
+                    }
+                );
+
+                var tryLoad = function () {
+                    didLoad
+                    .then (function (fulfilled) {
+                        console.log(fulfilled);
+                    })
+                    .catch(function (error) {
+                        console.log(error.message);
+                    })
+                }
                 
-
-                let myTitle = json.items[i].volumeInfo.title;
-                let author = json.items[i].volumeInfo.authors;
-                let card = makeCardGoogle(myTitle, author, imagesrc);
-                cards += card;
-                document.getElementById("b").innerHTML = cards;
-                console.log(i);
-
-             }
+    
+                 }
+            
+             
              
              document.getElementById("b").innerHTML = cards;
         })
