@@ -5,25 +5,22 @@ let KEY= "AIzaSyC3b16m7c_Z258vd4Q-KlwVcoH__WIJa44";
 
 
 function makeCardGoogle(title, author, imagesrc){
-
     let card = "";
+
     card += '<div class="book">';
     card += '<div class="rec-book">';
-    
-    card += "<img src=" + imagesrc + "/>";
-    
+    card += "<img " + "class='rec-image' " + "src=" + imagesrc + "/>";
     card += '</div><div class="description">';
     card += '<h6>' + title + '</h6>';
     card +=  '<p>' + author + '</p>';
     card += '</div></div>';
     return card;
-
 }
 
 function usefulGoogle(){
     console.log("here");
-    let descript = "huck";
-    let author = "twain";
+    let descript = "potter";
+    let author = "rowling";
     //const myurl = "https://openlibrary.org/isbn/" + isbn + ".json";
     let myurl = "https://www.googleapis.com/books/v1/volumes?q=" + descript + "+inauthor:" + author + "&key=" + KEY;
 
@@ -51,15 +48,19 @@ function usefulGoogle(){
 
             
              //let card = makeCard(isbn, json.title, description);
-             console.log(json.items[0].volumeInfo.title);
-             console.log(json.items[0].volumeInfo.authors);
+            let cards = "";
+            let myBooks = json.items;
+
+             for (let i = 0; i < myBooks.length; i++ ){
+                let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
+                let title = json.items[i].volumeInfo.title;
+                let author = json.items[i].volumeInfo.authors;
+                let card = makeCardGoogle(title, author, imagesrc);
+                cards += card;
+
+             }
              
-             let imagesrc = json.items[0].volumeInfo.imageLinks.thumbnail;
-             let title = json.items[0].volumeInfo.title;
-             let author = json.items[0].volumeInfo.authors;
-             let card = makeCardGoogle(title, author, imagesrc);
-             
-             document.getElementById("test2").innerHTML = card;
+             document.getElementById("rec").innerHTML = cards;
         })
 
 }
