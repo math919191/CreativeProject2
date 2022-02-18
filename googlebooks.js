@@ -9,7 +9,7 @@ function makeCardGoogle(title, author, imagesrc){
 
     card += '<div class="book">';
     card += '<div class="rec-book">';
-    card += "<img " + "class='rec-image' " + "src=" + imagesrc + "/>";
+    // card += "<img " + "class='rec-image' " + "src=" + imagesrc + "/>";
     card += '</div><div class="description">';
     card += '<h6>' + title + '</h6>';
     card +=  '<p>' + author + '</p>';
@@ -17,12 +17,12 @@ function makeCardGoogle(title, author, imagesrc){
     return card;
 }
 
-function usefulGoogle(){
+function usefulGoogle(title){
     console.log("here");
-    let descript = "potter";
-    let author = "rowling";
+    let descript = title;
+    let author = "";
     //const myurl = "https://openlibrary.org/isbn/" + isbn + ".json";
-    let myurl = "https://www.googleapis.com/books/v1/volumes?q=" + descript + "+inauthor:" + author + "&key=" + KEY;
+    let myurl = "https://www.googleapis.com/books/v1/volumes?q=" + descript + "&key=" + KEY;
 
     console.log(myurl);
     fetch(myurl)
@@ -52,17 +52,26 @@ function usefulGoogle(){
             let myBooks = json.items;
 
              for (let i = 0; i < myBooks.length; i++ ){
-                let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
-                let title = json.items[i].volumeInfo.title;
+                // let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
+                let myTitle = json.items[i].volumeInfo.title;
                 let author = json.items[i].volumeInfo.authors;
-                let card = makeCardGoogle(title, author, imagesrc);
+                let card = makeCardGoogle(myTitle, author, "");
                 cards += card;
 
              }
              
-             document.getElementById("rec").innerHTML = cards;
+             document.getElementById("b").innerHTML = cards;
         })
 
 }
 
-usefulGoogle();
+function loadBooks(e) {
+    e.preventDefault();
+    let title = document.getElementById("title").value;
+    console.log(title);
+    usefulGoogle(title);
+}
+
+document.getElementById("search").addEventListener('click', loadBooks);
+
+// usefulGoogle();
