@@ -178,3 +178,30 @@ h1 {
   font-size: 50px;
   text-align: center;
 }
+
+
+
+button {
+  font-size: 2em;
+  align-items: center;
+  color:  #2d3047ff;
+  background-color:#E8DDB5;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10%;
+}
+
+.box {
+  align-items: center;
+  font-size: 2em;
+  margin: 20px;
+  width: 80%;
+}
+
+.searchbar{
+  /* justify-content: center; */
+  align-items: center;
+  
+  /* margin-left: 50%; */
+
+}
