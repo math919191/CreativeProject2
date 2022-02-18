@@ -1,10 +1,10 @@
 //https://developers.google.com/books/docs/v1/using#APIKey
 //https://developers.google.com/books/docs/v1/libraries
-let KEY= "AIzaSyC3b16m7c_Z258vd4Q-KlwVcoH__WIJa44";
+let KEY = "AIzaSyC3b16m7c_Z258vd4Q-KlwVcoH__WIJa44";
 
 
 
-function makeCardGoogle(title, author, imagesrc){
+function makeCardGoogle(title, author, imagesrc, description){
     let card = "";
 
     card += '<div class="book">';
@@ -13,6 +13,7 @@ function makeCardGoogle(title, author, imagesrc){
     card += '</div><div class="description">';
     card += '<h6>' + title + '</h6>';
     card +=  '<p>' + author + '</p>';
+    card +=  '<p>' + description + '</p>';
     card += '</div></div>';
     return card;
 }
@@ -39,6 +40,7 @@ function usefulGoogle(title){
                 
                 
                     let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
+                    let description = json.items[i].volumeInfo.description;
                     
                     var didLoad = new Promise(
                         function(resolve, reject) {
@@ -65,7 +67,7 @@ function usefulGoogle(title){
     
                     let myTitle = json.items[i].volumeInfo.title;
                     let author = json.items[i].volumeInfo.authors;
-                    let card = makeCardGoogle(myTitle, author, imagesrc);
+                    let card = makeCardGoogle(myTitle, author, imagesrc, "descriptions");
                     cards += card;
                     document.getElementById("b").innerHTML = cards;
                     console.log(i);
@@ -74,10 +76,10 @@ function usefulGoogle(title){
                 
     
                  }
-            
-             
-             
              document.getElementById("b").innerHTML = cards;
+
+        }).catch(function(error){
+            console.log(error);
         })
 
 }
