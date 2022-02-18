@@ -40,6 +40,28 @@ function usefulGoogle(title){
                 
                     let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
                     
+                    var didLoad = new Promise(
+                        function(resolve, reject) {
+                            if (imagesrc != undefined) {
+                                resolve(imagesrc);
+                            } else {
+                                var reason = new Error("failed to load");
+                                reject(reason);
+                            }
+                        }
+                    );
+    
+                    var tryLoad = function () {
+                        didLoad
+                        .then (function (fulfilled) {
+                            console.log(fulfilled);
+                        })
+                        .catch(function (error) {
+                            console.log(error.message);
+                            imagesrc = "";
+                            
+                        })
+                    }
     
                     let myTitle = json.items[i].volumeInfo.title;
                     let author = json.items[i].volumeInfo.authors;
@@ -48,26 +70,7 @@ function usefulGoogle(title){
                     document.getElementById("b").innerHTML = cards;
                     console.log(i);
                     
-                var didLoad = new Promise(
-                    function(resolve, reject) {
-                        if (imagesrc != undefined) {
-                            resolve(imagesrc);
-                        } else {
-                            var reason = new Error("failed to load");
-                            reject(reason);
-                        }
-                    }
-                );
-
-                var tryLoad = function () {
-                    didLoad
-                    .then (function (fulfilled) {
-                        console.log(fulfilled);
-                    })
-                    .catch(function (error) {
-                        console.log(error.message);
-                    })
-                }
+                
                 
     
                  }
