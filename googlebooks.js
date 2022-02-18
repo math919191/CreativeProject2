@@ -4,19 +4,17 @@ let KEY= "AIzaSyC3b16m7c_Z258vd4Q-KlwVcoH__WIJa44";
 
 
 
-function makeCardGoogle(title, description){
+function makeCardGoogle(title, author, imagesrc){
 
     let card = "";
     card += '<div class="book">';
     card += '<div class="rec-book">';
     
-    //card += "<img src='https://covers.openlibrary.org/b/isbn/";
-    //card += isbn;
-    //card += "-M.jpg' />";
-
+    card += "<img src=" + imagesrc + "/>";
+    
     card += '</div><div class="description">';
     card += '<h6>' + title + '</h6>';
-    card +=  '<p>' + description + '</p>';
+    card +=  '<p>' + author + '</p>';
     card += '</div></div>';
     return card;
 
@@ -56,7 +54,10 @@ function usefulGoogle(){
              console.log(json.items[0].volumeInfo.title);
              console.log(json.items[0].volumeInfo.authors);
              
-             let card = makeCardGoogle(json.items[0].volumeInfo.title, json.items[0].volumeInfo.authors);
+             let imagesrc = json.items[0].volumeInfo.imageLinks.thumbnail;
+             let title = json.items[0].volumeInfo.title;
+             let author = json.items[0].volumeInfo.authors;
+             let card = makeCardGoogle(title, author, imagesrc);
              
              document.getElementById("test2").innerHTML = card;
         })
