@@ -196,13 +196,13 @@ button {
   align-items: center;
   font-size: 2em;
   margin: 20px;
-  width: 65%;
+  width: 70%;
 }
 
 .searchbar{
-  /* justify-content: center; */
-  align-items: center;
-  
-  /* margin-left: 50%; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: solid, 5px, red;
 
 }
