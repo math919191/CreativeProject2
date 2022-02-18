@@ -9,7 +9,7 @@ function makeCardGoogle(title, author, imagesrc){
 
     card += '<div class="book">';
     card += '<div class="rec-book">';
-    // card += "<img " + "class='rec-image' " + "src=" + imagesrc + "/>";
+    card += "<img " + "class='rec-image' " + "src=" + imagesrc + "/>";
     card += '</div><div class="description">';
     card += '<h6>' + title + '</h6>';
     card +=  '<p>' + author + '</p>';
@@ -30,33 +30,22 @@ function usefulGoogle(title){
             return response.json();
         }).then(function(json){
             console.log(json);
-
-            //  let description = json.description; 
-            //  console.log(description);
-            //  let results = "";
-            //  results += '<h2>Weather in ' + json.description + "</h2>";
-        
-            //  results += "<p>";
-            //  results += description;
-            //  results += "</p>";
-            //  results += "<img src='https://covers.openlibrary.org/b/isbn/";
-            //  results += isbn;
-
-            //  results += "-M.jpg' />";
-
-             //document.getElementById("test").innerHTML = results;
-
-            
-             //let card = makeCard(isbn, json.title, description);
             let cards = "";
             let myBooks = json.items;
+            let imagesrc = "";
 
              for (let i = 0; i < myBooks.length; i++ ){
-                // let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
+                
+                
+                let imagesrc = json.items[i].volumeInfo.imageLinks.thumbnail;
+                
+
                 let myTitle = json.items[i].volumeInfo.title;
                 let author = json.items[i].volumeInfo.authors;
-                let card = makeCardGoogle(myTitle, author, "");
+                let card = makeCardGoogle(myTitle, author, imagesrc);
                 cards += card;
+                document.getElementById("b").innerHTML = cards;
+                console.log(i);
 
              }
              
